@@ -1476,7 +1476,7 @@
                                 </h6>
 
                                 <p>
-                                    newmediamarketing25gmail.com
+                                    newmediamarketing2@gmail.com
                                 </p>
 
                             </div>
@@ -1581,6 +1581,10 @@
 
                                         <option selected disabled>
                                             Select Service
+                                        </option>
+
+                                        <option value="Lead Generation">
+                                            Lead Generation
                                         </option>
 
                                         <option value="Telecalling">
@@ -1752,26 +1756,46 @@
 
     <script>
 
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
+document.getElementById("contactForm").addEventListener("submit", function(event) {
 
-            event.preventDefault();
+    event.preventDefault();
 
-            const name = this.querySelector('[name="name"]').value.trim();
-            const email = this.querySelector('[name="email"]').value.trim();
-            const message = this.querySelector('[name="message"]').value.trim();
+    const name = this.querySelector('[name="name"]').value.trim();
+    const email = this.querySelector('[name="email"]').value.trim();
+    const phone = this.querySelector('[name="phone"]').value.trim();
+    const service = this.querySelector('[name="service"]').value;
+    const message = this.querySelector('[name="message"]').value.trim();
 
-            if (!name || !email || !message) {
-                alert("Please fill in all required fields.");
-                return;
-            }
+    if (!name || !email || !message) {
+        alert("Please fill in all required fields.");
+        return;
+    }
 
-            alert("Thank you! Your message has been received.");
+    const whatsappNumber = "919946441732";
 
-            this.reset();
+    const whatsappMessage =
+        `Hello New Media,
 
-        });
+I would like to enquire about your services.
 
-    </script>
+Name: ${name}
+Email: ${email}
+Phone: ${phone || "Not provided"}
+Service: ${service || "Not selected"}
+
+Requirement:
+${message}`;
+
+    const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+
+    this.reset();
+
+});
+
+</script>
 
 </body>
 </html>
